@@ -1,0 +1,1688 @@
+
+<html>
+<meta name='google-site-verification' content='8mfhOJy8zJgVh6GCVbsh77DWyX36-Kg53wB5UpeoZzk' /><meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
+<script language="javascript" src="/common/svrLink.asp"></script>
+<script language="javascript" src="/js/freechal.js"></script>
+<script language="javascript" src="/js/fcMsg.js"></script>
+<script language="javascript" src="/js/Nethru.js"></script>
+<script language="javascript" src="/js/freechalon/freechalon.js"></script>
+<script language="javascript" src="/js/freechalon/FcMsg.js"></script>
+ 
+
+<script language=javascript>
+
+function OpenCPAWin(strURL, strTarget) {
+
+    if(strTarget == 'W') {
+
+        window.open(strURL, 'CPAWin', 'left=' + (window.screen.availWidth/2 - 790/2) + ',top=' + (window.screen.availHeight/2 - 600/2) + ', all=no, width=790, height=600');
+
+    }
+
+    else {
+
+        window.open(strURL);
+
+    }
+
+}
+
+</script>
+
+
+
+<script Language="javascript">
+/* 추가로 접속하고 나가는 사용자를 관리하기 위한 javascript 배열 */
+	var userIDList = new Array(10);
+	var userNameList = new Array(10);
+	var lngTotalUserCnt
+	
+
+</script>
+<script language=javascript>
+function makeList(userid, username, objLayer, objCounter, classname) {
+	var i, j
+	var tempUserIDList = new Array(eval(userIDList.length+1));
+	var tempUserNameList = new Array(eval(userNameList.length+1));
+	var listString = '';
+	var listStringTemp = '';	
+	var strColor = '';
+	var strClass = '';
+
+	j = 0;
+	for (i=0;i<userIDList.length;i++) {
+		if (userIDList[i] != null && userIDList[i] != '' ) {
+			if (userNameList[i].substr(1,2) == "00") {
+				// 게스트 색상				
+				strColor='#517892';
+			}
+			else if (userNameList[i].substr(1,2) == "04") {
+				// 마스터 색상
+				strColor='#5f5f5f';
+			}
+			else {
+				// 회원 색상
+				strColor='#5f5f5f';
+			}
+
+			if (classname != '' && classname != null) {	
+				strColor = '';		
+				strClass = ' class=' + classname;				
+			}						
+			
+			if (userNameList[i].substr(0,1) =='M' ) {
+				listStringTemp = "<img src=" + g_imgsvr + "/Comservice/Activity/comtylive/bl_man.gif border=0 >";
+			}
+			else {
+				listStringTemp = "<img src=" + g_imgsvr + "/Comservice/Activity/comtylive/bl_woman.gif border=0 >";
+			}
+
+			if (userNameList[i].substr(3,1) != 'Y' ) {
+				listStringTemp = listStringTemp + "&nbsp;<span onClick=\"showOMenu('" + userid + "','" + username + "','" + userIDList[i] + "','" + userNameList[i].substring(4, userNameList[i].length) + "')\" style=cursor:hand;color:" + strColor + strClass + " >" + userNameList[i].substring(4, userNameList[i].length) + "</span><br>";
+				listString = listStringTemp + listString;
+				tempUserIDList[j] = userIDList[i];
+				tempUserNameList[j] = userNameList[i];
+				j++;
+				listStringTemp = '';			
+			}
+		}		
+	}
+	userIDList = tempUserIDList;
+	userNameList = tempUserNameList;
+
+	lngTotalUserCnt = j;
+	if (typeof(objCounter) == 'object' ) {
+/*		
+		if (lngTotalUserCnt >= 10) {
+			lngTotalUserCnt = 10;
+			objCounter.innerHTML = lngTotalUserCnt + '명 이상';
+		}
+		else {
+			objCounter.innerHTML = lngTotalUserCnt + '명';
+		}
+*/		
+		objCounter.innerHTML = lngTotalUserCnt + '명';		
+	}
+		
+	if (typeof(objLayer) == 'object' ) {		
+		objLayer.innerHTML = listString;
+	}
+}
+</script>
+
+<script language="JavaScript">
+	lngTotalUserCnt = 0;
+</script>
+<link rel="stylesheet" href="/css/community/IndexStyle.css" type="text/css" />
+<link rel="stylesheet" href="/css/community/LayoutType_2L.css" type="text/css" />
+<link rel="stylesheet" href="/css/community/SkinType_w.css" type="text/css" />
+<link rel="stylesheet" href="/css/community/BackgroundStyle/BackgroundStyle_020.css" type="text/css" />
+<link rel="stylesheet" href="/css/community/TitleStyle/TitleColorStyle_019.css" type="text/css" />
+<link rel="stylesheet" href="/css/community/CoverStyle/white/CoverStyle_019.css" type="text/css" />
+<link rel="stylesheet" type="text/css" href="/css/module/mode20.css">
+<link rel="stylesheet" type="text/css" href="/css/community/BbsStyle2/white/Board.css">
+
+
+<head>
+<title>연세대학교 중앙재즈동아리 So What [http://home.freechal.com/ssowhat]</title>
+
+	<script language="JavaScript" type="text/javascript" src="/js/FcScript.js"></script>
+</head>
+<body>
+
+<link rel="stylesheet" type="text/css" href="/css/community/ck.css">
+
+
+
+
+<!-- include virtual="/include/freechalon/install.inc" -->
+
+	<style type="text/css">
+	#div_layout{
+		text-overflow:ellipsis;
+		overflow:hidden;
+		word-break:break-all;
+		width:130px;
+	}
+	</style>
+
+<script	language=javascript>
+function menu_Login() {
+
+	top.location.href = "http://community.freechal.com/common/FcCommonLogGate.asp?gbn=T&RedirUrl=http%3A%2F%2Fhome%2Efreechal%2Ecom%2Fetc%2Flogin%2Easp%3F" + escape(escape(top.location.href)) + "&MenuNm=LOGIN&Referer=http%3A%2F%2Fcommunity%2Efreechal%2Ecom%2FComService%2FActivity%2FAlbum%2FCsPhotoList%2Easp";
+
+}
+</script>
+<script	language=javascript>
+
+var	_displayShown = "C";
+
+
+function rankPop() {
+	window.open("http://community.freechal.com/section/Ranking/Ranking_Info.asp?grpid=509950","rankwin","width=400,height=340,left="+ (window.screen.availWidth-425)/2+",top="+ (window.screen.availHeight-350)/2);
+}
+
+//커뮤니티 추천하기 팝업창
+function openRegComList() {
+	window.open('/common/Recommend/CsRegMain.asp?grpid=509950','recommendwin','fullscreen=no,titlebar=no,toolbar=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=no,width=500,height=270');
+}
+
+
+var	strTopSumImg, strTopComtyImg;
+
+strTopSumImg = g_imgsvr + "/common/newtop/btn_sum.gif";
+strTopComtyImg = g_imgsvr + "/common/newtop/btn_com.gif";
+
+function displayToggle() {
+	var SumTag = document.getElementById("freqsum");
+	var CommTag = document.getElementById("freqcomm");
+	//var ImgTag = document.getElementById("topimg");
+	if(_displayShown == "S") {
+		SumTag.style.display = "";
+		CommTag.style.display = "";
+		//ImgTag.src = strTopSumImg;
+		_displayShown = "C"
+	} else {
+		SumTag.style.display = "";
+		CommTag.style.display = "";
+		ImgTag.src = strTopComtyImg;
+		_displayShown = "S"
+	}
+}
+
+
+</script>
+
+
+<script	language="JavaScript" src="/js/FcMain20/AvataMenuTopBar.js"></script>
+
+<!--## GNB영역 Start ##-->
+<div id="cTop">
+	<div id="cTopL" class="fl">
+	<Script Language="JavaScript" type="text/javascript">
+	ObjFlash("http://image.freechal.com/community/common/white/fclogo.swf", 110, 40, "");
+	</Script>
+	</div>
+	<div id="cTopR">
+		<div id="cTopRTxt" class="gnb">
+			<a href="http://community.freechal.com/common/FcCommonLogGate.asp?gbn=T&RedirUrl=http%3A%2F%2Fnews%2Efreechal%2Ecom&MenuNm=NEWS&Referer=http%3A%2F%2Fcommunity%2Efreechal%2Ecom%2FComService%2FActivity%2FAlbum%2FCsPhotoList%2Easp"			class="gnb" target="_top">뉴스</a> |
+			<a href="http://community.freechal.com/common/FcCommonLogGate.asp?gbn=T&RedirUrl=http%3A%2F%2Fcommunity%2Efreechal%2Ecom&MenuNm=COMMUNITY&Referer=http%3A%2F%2Fcommunity%2Efreechal%2Ecom%2FComService%2FActivity%2FAlbum%2FCsPhotoList%2Easp"		class="gnb" target="_top">커뮤니티</a> |
+			<a href="http://community.freechal.com/common/FcCommonLogGate.asp?gbn=T&RedirUrl=http%3A%2F%2Fmail%2Efreechal%2Ecom%2Fmailhome%2Easp&MenuNm=MAIL&Referer=http%3A%2F%2Fcommunity%2Efreechal%2Ecom%2FComService%2FActivity%2FAlbum%2FCsPhotoList%2Easp" 	class="gnb" target="_top">메일</a> |
+			<a href="http://community.freechal.com/common/FcCommonLogGate.asp?gbn=T&RedirUrl=http%3A%2F%2Fqtv%2Efreechal%2Ecom&MenuNm=QTV&Referer=http%3A%2F%2Fcommunity%2Efreechal%2Ecom%2FComService%2FActivity%2FAlbum%2FCsPhotoList%2Easp"			class="gnb" target="_top">QTV</a> |
+			<a href="http://community.freechal.com/common/FcCommonLogGate.asp?gbn=T&RedirUrl=http%3A%2F%2Fq%2Efreechal%2Ecom&MenuNm=Q&Referer=http%3A%2F%2Fcommunity%2Efreechal%2Ecom%2FComService%2FActivity%2FAlbum%2FCsPhotoList%2Easp"				class="gnb" target="_top">마이Q</a> |
+			<a href="http://community.freechal.com/common/FcCommonLogGate.asp?gbn=T&RedirUrl=http%3A%2F%2Fgame%2Efreechal%2Ecom&MenuNm=GAME&Referer=http%3A%2F%2Fcommunity%2Efreechal%2Ecom%2FComService%2FActivity%2FAlbum%2FCsPhotoList%2Easp"			class="gnb" target="_top">게임</a> |
+			<a href="http://community.freechal.com/common/FcCommonLogGate.asp?gbn=T&RedirUrl=http%3A%2F%2Fwww%2Efileguri%2Ecom&MenuNm=FILEGURI&Referer=http%3A%2F%2Fcommunity%2Efreechal%2Ecom%2FComService%2FActivity%2FAlbum%2FCsPhotoList%2Easp"			class="gnb" target="_top">파일구리</a> &nbsp;
+		</div>
+		<div id="cTopRBtn">
+			
+<script language="JavaScript">
+function freqComm_goFunc()
+{
+	var sel = document.freqComm_goFuncForm.freqComm_funcGo;
+	var gourl = sel[sel.selectedIndex].value;
+	if (gourl == "")
+		return;
+
+	if (sel.selectedIndex == sel.length - 1 ||  // 자주가는 커뮤니티
+		sel.selectedIndex == sel.length - 2 ||  //  커뮤니티 검색
+		(!IsFreechalOnInstalled() && sel.selectedIndex == sel.length - 4) ||    //  freechalOn 설치
+		sel.selectedIndex == 2)             // 내 커뮤니티
+		top.location.href = gourl;
+	else
+		
+		top.location.href = "http://home.freechal.com/Common/FcCommonLogGate.asp?gbn=T&accessgbn=freqcomm&MenuNm=FREQCOMM&Referer=http%3A%2F%2Fcommunity%2Efreechal%2Ecom%2FComService%2FActivity%2FAlbum%2FCsPhotoList%2Easp&RedirUrl=" + escape(gourl);
+		
+}
+
+function freqComm_isNew(getDate)
+{
+
+	var lastAccessDt = new Date("January 31,2013 23:17:53");
+	var intLastAccessDt;
+	var intNow;
+	var intGetDt;
+	var intDiffHour;
+	var intTmpDiff;
+
+	intLastAccessDt = 0;//Date.parse(lastAccessDt);
+
+	intNow = Date.parse(new Date());
+
+	if (!isNaN(getDate))
+		intGetDt  = Date.parse(getDate);
+	else
+		intGetDt = 0;
+
+	if (intGetDt == 0)
+		return false;
+	if (intLastAccessDt == 0)
+		intDiffHour = 24;
+	else
+	{
+		intTmpDiff = intNow - intLastAccessDt;
+		intDiffHour = parseInt(intTmpDiff/(1000*60*60*24))*24;
+		if (intDiffHour == 0)
+			intDiffHour = 24;
+	}
+
+	intTmpDiff = intNow - intGetDt;
+	if (parseInt(intTmpDiff/(1000*60*60))<intDiffHour)
+		return true;
+
+	return false;
+}
+
+function freqComm_displaySelect()
+{
+	document.writeln("<table width='139' cellpadding=0 cellspacing=0 border=0>");
+	document.writeln("<tr>");
+	document.writeln("<td width=10>");
+	document.writeln("<form id=freqComm_goFuncForm name=freqComm_goFuncForm method=post onSubmit='return false;'>");
+	document.writeln("<td width='139' valign=middle>");
+	document.writeln("<select id='freqComm_funcGo' name='freqComm_funcGo' onChange='freqComm_goFunc();' style='width:139px; font-size:9pt; ; font-family: 돋움; '>");
+	document.writeln("<option value=''>자주가는 커뮤니티</option>");
+	document.writeln("<option value=''>-------------------</option>");
+	document.writeln("<option value='http://home.freechal.com/Common/FcCommonLogGate.asp?gbn=T&MenuNm=FREQCOMM&RedirUrl=http%3A%2F%2Fcommunity%2Efreechal%2Ecom%2FBase%2FMyComty%2FMyComtyList%2Easp&Referer=http%3A%2F%2Fcommunity%2Efreechal%2Ecom%2FComService%2FActivity%2FAlbum%2FCsPhotoList%2Easp'>내 커뮤니티 ▶▶</option>");
+
+	document.writeln("<option value=''>-------------------</option>");
+	document.writeln("<option value='http://home.freechal.com/Common/FcCommonLogGate.asp?gbn=T&MenuNm=FREQCOMM&RedirUrl=http%3A%2F%2Fcommunity%2Efreechal%2Ecom&Referer=http%3A%2F%2Fcommunity%2Efreechal%2Ecom%2FComService%2FActivity%2FAlbum%2FCsPhotoList%2Easp'>커뮤니티 검색</option>");
+	document.writeln("<option value='http://home.freechal.com/Common/FcCommonLogGate.asp?gbn=T&MenuNm=FREQCOMM&RedirUrl=http%3A%2F%2Fcommunity%2Efreechal%2Ecom%2FBase%2FMyComty%2FMyComtySet%2Easp&Referer=http%3A%2F%2Fcommunity%2Efreechal%2Ecom%2FComService%2FActivity%2FAlbum%2FCsPhotoList%2Easp'>설정</option>");
+	document.writeln("</select>");
+	document.writeln("</td>");
+	document.writeln("</form>");
+	document.writeln("</tr>");
+	document.writeln("</table>");
+}
+
+function freqComm_insertRecomm()
+{
+	freqComm_insertOption("맘에 드는 컴티를", "", "#808080");
+	freqComm_insertOption("찾아 놀러가보세요!", "", "#808080");
+	freqComm_insertOption("-------------------", "");
+}
+
+function freqComm_insertComm(idx, itm)
+{
+	var rtn, opt;
+
+	opt = new Option(itm[1], itm[0]);
+	if (!isNaN(itm[2]) && freqComm_isNew(itm[2]))
+	{
+		opt.style.color = "#0034C5"
+		opt.style.backgroundColor = "#F2F2FF";
+		rtn = true;
+	}
+	else
+		rtn = false;
+
+	var sel = document.freqComm_goFuncForm.freqComm_funcGo;
+	sel.options.add(opt, sel.length - 3);
+
+	return rtn;
+}
+
+function freqComm_insertOption(text, value, color, bgcolor)
+{
+	var sel = document.freqComm_goFuncForm.freqComm_funcGo;
+	var opt = new Option(text, value);
+	if (color)
+		opt.style.color = color;
+	if (bgcolor)
+		opt.style.backgroundColor = bgcolor;
+	sel.options.add(opt, sel.length - 3);
+}
+
+function freqComm_resizeDiv(cnt, recomm)
+{
+}
+
+freqComm_displaySelect();
+
+
+	document.writeln('<iframe width=0 height=0 marginwidth=0 marginheight=0 hspace=0 vspace=0 frameborder=0 scrolling=no src="/common/FreqCommB.asp?From=top" ALLOWTRANSPARENCY="true" style="display:none"></iframe>');
+
+</script>
+
+		</div>
+		<div id="cTopRBtn">
+			&nbsp;&nbsp;<a href="http://community.freechal.com/common/FcCommonLogGate.asp?gbn=T&RedirUrl=https%3A%2F%2Fses%2Efreechal%2Ecom%2Fsignout%2Fdefault%2Easp&MenuNm=LOGOUT&Referer=http%3A%2F%2Fcommunity%2Efreechal%2Ecom%2FComService%2FActivity%2FAlbum%2FCsPhotoList%2Easp" target="_top"><img src="http://image.freechal.com/community/common/white/btn_logout.gif" border="0" align="absmiddle"></a>
+		</div>
+	</div>
+</div>
+<!--## GNB영역 End ##-->
+<script lnaguage='javascript'>
+function AccCallback() {
+    if (xmlAccObject.readyState == 4) {
+        if (xmlAccObject.status == 200) {
+        } else if (xmlAccObject.status == 204){	//데이터가 존재하지 않을 경우
+        }
+    }
+}
+var xmlAccObject;
+if (window.ActiveXObject) {
+	xmlAccObject = new ActiveXObject("Microsoft.xmlHttp");
+}
+else if (window.xmlAccObjectRequest) {
+	xmlAccObject = new XMLHttpRequest();
+}
+xmlAccObject.open("post", "/common/GrpAccessLog.asp?grpid=509950", true);
+xmlAccObject.onreadystatechange = AccCallback;
+xmlAccObject.send(null);
+</script>
+<div id="RD">
+<samp id="RD1"></samp><samp id="RD2"></samp><samp id="RD3"></samp><samp id="RD4"></samp>
+<!--## 중앙영역 Start ##-->
+<div id="MainBodyContent">
+	<!--## 이미지 타이틀 영역 Start ##-->
+
+<div id="divTitleUser" class="titleBG" onclick="javascript:location.href='http://home.freechal.com/ssowhat/';"></div>
+<div id="cTitle" class="title_align">
+	<a href="http://home.freechal.com/ssowhat" target="_top" class="titleName"><span id="skin_title">연세대학교 중앙재즈동아리 So What</span></a>
+	<br><br style="font-size:2px;">
+	<span class="titleUrl">http://home.freechal.com/ssowhat</span>
+</div>			
+
+	<!--## 이미지 타이틀 영역 End ##-->
+	<!--## 커뮤니티 정보 영역 Start ##-->
+
+<div id="cBlogTop">
+	<div id="cBlogTopFL">
+	<span class="b">마스터 : <a href="javascript:openHompy('jyjy0917')" class="mastername">김진영</a></span>
+	<span class="g_C4">|</span>
+	회원수 : <span class="b">1,903</span>명
+	<span class="g_C4">|</span>
+	등급 : <span class="b"><a href="javascript:rankPop();" class="mastername">2</a></span>등급
+	</div>
+	<div class="fl" style="padding:7px 0px 0px 0;">
+	<img src="http://image.freechal.com/community/common/ranking/ico_ranking2.gif" align="absmiddle" hspace="5">
+	
+	<a href="http://home.freechal.com/ComService/Management/Mng.asp?GrpId=509950"><img src="http://image.freechal.com/community/common/white/btn_manage.gif" alt="" border="0" align="absmiddle"></a>
+	
+	</div>
+</div>
+	<!--## 커뮤니티 정보 영역 End ##-->
+	<!--## 레이아웃 영역 Start ##-->
+	<div id="FcMainArea">
+		<!-- 좌측 메뉴 영역 Start -->
+
+
+<script LANGUAGE="JavaScript">
+var g_login = true;
+var g_userid = 'xxxyel';
+var g_hname = '박지수';
+var g_memberGbnNm = '스탭';
+var g_grpcat = 'C51';
+var g_grpcatGbn = 'C';
+
+
+
+var g_curgrpid = '509950';
+var g_objid = 'GCOM13';
+var g_masterid = 'jyjy0917';
+var g_masternm = '김진영';
+var g_membercnt = '1903';
+var g_createdt = '2001.03.03';
+var g_mngpermission = false;
+var g_menupos = 'L';
+var g_hidemenu = false;
+var g_menuwidth = '180';
+var g_menusaveyn = 'Y';
+var g_commtype = 'F';
+var g_menuheight = '57';
+var g_certinfo = 'NNNNN';
+var g_grpurl = 'ssowhat';
+var g_curgrpnm = '연세대학교 중앙재즈동아리 So What';
+var g_canapply = false;
+var g_curSelGroupid = '';
+var g_trialyn = 'C';
+var g_menuitem = 'N'; 
+var g_membersearch = 'Y';
+var g_menustyle = '0';
+var g_menudesign = '0';
+var g_freechalon = '2';
+var g_frameheight = '24';
+var g_hidecommlive = true;
+var g_chatmenu = true;
+var g_mngnew = '1';
+var g_statistics = 'N';
+var g_leftmenu = ''
+var g_allianceComm = "<div id='MPartnerTitle'><span class='b'>제휴 커뮤니티</span><span class='v10'>(1)</span></div><ul id='MPartnerList' style='display:block'><li><a href='http://home.freechal.com/ssowhatpds' class='main'>연.쏘.자</a></li></ul>";    // 제휴 커뮤니티(2006-09-14 By SOH)
+
+var g_homeinfo = [
+	['13.asp','커뮤니티 홈 페이지']
+];
+var g_menuinfo = [
+	['GCOM01','1','공지사항','0','','Y','','','','','Y','Y','0','15','3145728','0'],
+	['GCOM06','1','So What 스케쥴!','0','','N','','','','color:#000000; font-family:; font-weight:bold; font-style:normal; text-decoration:none;','Y','Y','0','0','0','0'],
+	['GSTR','12','So What 백서','0','1','Y','','','','color:#000000; font-weight:normal; font-style:normal; text-decoration:none;','Y','Y','0','0','0','0'],
+	['GCOM02','86','정기공연','0','1','N','','','','color:#000000; font-weight:normal; font-style:normal; text-decoration:none;','Y','Y','0','0','0','0'],
+	['GCOM02','87','뮤직캠프','0','1','N','','','','color:#000000; font-weight:normal; font-style:normal; text-decoration:none;','Y','Y','0','0','0','0'],
+	['GCOM02','119','Live Jazz Bar','0','1','N','','','','','Y','Y','0','0','0','0'],
+	['GCOM02','152','MT / LT / 기타','0','1','N','','','','','Y','Y','0','0','0','0'],
+	['GEND','12','So What 백서','0','1','Y','','','','color:#000000; font-weight:normal; font-style:normal; text-decoration:none;','Y','Y','0','0','0','0'],
+	['GSTR','9','행사준비','0','2','N','','','','','Y','Y','0','0','0','0'],
+	['GCOM02','186','정기공연','0','2','N','','','','color:#000000; font-weight:bold; font-style:normal; text-decoration:none;','Y','Y','0','15','3145728','0'],
+	['GCOM02','32','Live Jazz Bar','0','2','N','','','','color:#000000; font-weight:bold; font-style:normal; text-decoration:none;','Y','Y','0','30','3145728','0'],
+	['GCOM02','46','Music Camp','0','2','N','','','','color:#000000; font-family:; font-weight:normal; font-style:normal; text-decoration:none;','Y','Y','0','15','3145728','0'],
+	['GCOM02','15','공연곡 합주실','0','2','N','','','','color:#000000; font-weight:normal; font-style:normal; text-decoration:none;','Y','Y','0','30','3145728','0'],
+	['GCOM02','221','외부행사 및 스폰서','0','2','N','외부행사 일정에 대한 공지 및\n스폰서 팀의 활동내역!!','','','','Y','Y','0','0','0','0'],
+	['GEND','9','행사준비','0','2','N','','','','','Y','Y','0','0','0','0'],
+	['GSTR','11','처음오셨군요','0','3','N','','','','','Y','Y','0','0','0','0'],
+	['GCOM02','6','가입인사','0','3','N','','','','','Y','Y','0','15','3145728','0'],
+	['GCOM02','51','So What Q&A','0','3','N','','','','color:#333333; font-weight:normal; font-style:normal; text-decoration:none;','Y','Y','0','15','3145728','0'],
+	['GEND','11','처음오셨군요','0','3','N','','','','','Y','Y','0','0','0','0'],
+	['GCOM02','1','So What 날적이','0','','N','','','','color:#4c4c4c; font-family:굴림체; font-weight:normal; font-style:normal; text-decoration:none;','Y','Y','0','15','3145728','0'],
+	['GCOM02','2','정회원전용','0','','N','','','','','Y','Y','0','15','3145728','0'],
+	['GCOM02','43','OB 모여라','0','','N','','','','','Y','Y','0','0','0','0'],
+	['GCOM23','2','익명게시판','0','','N','','','','','Y','Y','0','0','0','0'],
+	['GSTR','8','감상모임','0','4','N','','','','color:#000000; font-family:; font-weight:bold; font-style:normal; text-decoration:none;','Y','Y','0','0','0','0'],
+	['GCOM02','16','감모게시판','0','4','N','','','','','Y','Y','0','15','3145728','0'],
+	['GCOM22','3','감모 후기','0','4','N','','','','','Y','Y','0','0','0','0'],
+	['GCOM22','4','재즈 에세이','0','4','N','','','','','Y','Y','0','0','0','0'],
+	['GCOM22','1','추천 음악들','0','4','N','','','','','Y','Y','0','15','3145728','0'],
+	['GCOM02','5','Jazz Study','0','4','N','','','','','Y','Y','0','15','3145728','0'],
+	['GCOM02','37','매일감모하기','0','4','N','','','','','Y','Y','0','15','3145728','0'],
+	['GEND','8','감상모임','0','4','N','','','','color:#000000; font-family:; font-weight:bold; font-style:normal; text-decoration:none;','Y','Y','0','0','0','0'],
+	['GSTR','10','실무게시판','0','5','N','','','','','Y','Y','0','0','0','0'],
+	['GCOM02','330','총회안건','0','5','N','매달 총회 2주전 일정공지! & 댓글을 통한 안건 추가!','','','','Y','Y','0','0','0','0'],
+	['GCOM02','54','회의록','0','5','N','','','','','Y','Y','0','0','0','0'],
+	['GCOM02','33','재산내역','0','5','N','','','','','Y','Y','0','0','0','0'],
+	['GCOM02','55','예약상황','0','5','Y','','','','','Y','Y','0','0','0','0'],
+	['GCOM07','1','투표합시다!','0','5','Y','','','','','Y','Y','0','10','3145728','0'],
+	['GCOM02','56','아이디어창고','0','5','N','','','','','Y','Y','0','0','0','0'],
+	['GEND','10','실무게시판','0','5','N','','','','','Y','Y','0','0','0','0'],
+	['GSTR','14','Big Band 연모','0','6','N','','','','','Y','Y','0','0','0','0'],
+	['GCOM02','4','연모후기·건의','0','6','N','','','','','Y','Y','0','0','0','0'],
+	['GCOM02','7','악보계','0','6','N','','','','','Y','Y','0','0','0','0'],
+	['GCOM51','1','출석부','0','6','N','','','','color:#333333; font-weight:normal; font-style:normal; text-decoration:none;','N','Y','0','5','3145728','0'],
+	['GEND','14','Big Band 연모','0','6','N','','','','','Y','Y','0','0','0','0'],
+	['GSTR','7','연주모임','0','7','N','','','','','Y','Y','0','0','0','0'],
+	['GCOM02','25','색소폰','0','7','N','','','','','Y','Y','0','0','0','0'],
+	['GCOM02','35','트럼펫','0','7','N','','','','','Y','Y','0','15','3145728','0'],
+	['GCOM02','50','트럼본','0','7','N','','','','','Y','Y','0','0','0','0'],
+	['GCOM02','368','클라리넷','0','7','N','','','','color:#333333; font-weight:normal; font-style:normal; text-decoration:none;','Y','Y','0','15','3145728','0'],
+	['GCOM02','19','피아노','0','7','N','','','','','Y','Y','0','0','0','0'],
+	['GCOM02','31','드럼','0','7','N','','','','','Y','Y','0','15','3145728','0'],
+	['GCOM02','26','기타','0','7','N','','','','','Y','Y','0','0','0','0'],
+	['GCOM02','28','베이스','0','7','N','','','','','Y','Y','0','0','0','0'],
+	['GCOM02','42','연주스터디','0','7','Y','','','','','Y','Y','0','0','0','0'],
+	['GEND','7','연주모임','0','7','N','','','','','Y','Y','0','0','0','0'],
+	['GCOM13','1','So What 사진첩','0','','','','','','color:#333333; font-weight:normal; font-style:normal; text-decoration:none;','Y','','0','8','3145728','0'],
+	['GCOM02','30','연락처에요','0','','N','','','','','Y','Y','0','0','0','0'],
+	['GSTR','13','자료실','0','8','N','','','','','Y','Y','0','0','0','0'],
+	['GCOM03','3','일반자료실','0','8','N','','','','','Y','Y','0','0','0','0'],
+	['GCOM03','15','빅밴드 모여라','0','8','N','','','','color:#333333; font-weight:normal; font-style:normal; text-decoration:none;','Y','Y','0','20','3145728','0'],
+	['GCOM03','4','스텝자료실','0','8','N','','','','','Y','Y','0','0','0','0'],
+	['GEND','13','자료실','0','8','N','','','','','Y','Y','0','0','0','0'],
+	['GCOM02','485','전국대학생연합재즈페스티벌','0','','N','2010년 1월에 있을 대학연합재즈페스티벌에 대한 아이디어를 공유하는 게시판입니다. 행사에 대한 어떠한 생각이라도 좋으니 기록해주세요! 더욱 성공적인 행사를 위한 밑거름이 될 것입니다.','','','color:#333333; font-weight:normal; font-style:normal; text-decoration:none;','Y','Y','0','15','3145728','0'],
+	['GCOM49','6','default','0','','N','','','','','Y','Y','0','0','0','0'],
+	['GSTR','4','나누는공간','0','9','N','','','','','Y','Y','0','0','0','0'],
+	['GCOM15','1','추천 사이트','0','9','N','','','','','Y','Y','0','0','0','0'],
+	['GEND','4','나누는공간','0','9','N','','','','','Y','Y','0','0','0','0'],
+	['GSTR','5','공사중..','0','10','Y','','','','','Y','Y','0','0','0','0'],
+	['GCOM02','20','햄토리스터디','0','10','Y','','','','','Y','Y','0','15','3145728','0'],
+	['GCOM02','29','프로젝트게시판','0','10','Y','','','','','Y','Y','0','0','0','0'],
+	['GCOM04','1','방명록','0','10','Y','','','','','Y','Y','0','5','3145728','0'],
+	['GCOM02','3','쏘왓부활기','0','10','N','','','','','Y','Y','0','0','0','0'],
+	['GCOM11','1','♪쏘왓회의방♬','0','10','Y','','','','','Y','Y','0','0','0','0'],
+	['GCOM45','1','커뮤니티 제휴','0','10','N','','','','','Y','Y','0','0','0','0'],
+	['GEND','5','공사중..','0','10','Y','','','','','Y','Y','0','0','0','0'],
+	['GCOM02','257','동영상 모음','0','','Y','','','','','Y','Y','0','0','0','0'],
+	['GCOM62','1','커버스토리','0','','','','','','','Y','Y','0','0','0','0'],
+	['GCOM56','1','추카추카!','0','','','','','','','Y','Y','0','0','0','0'],
+	['GSTR','-2','우리컴티 섬','0','11','N','','','','','Y','Y','0','0','0','0'],
+	['GEND','-2','우리컴티 섬','0','11','N','','','','','Y','Y','0','0','0','0']
+];
+var g_groupinfo = [
+	['1','4',false,'GEND'],
+	['2','6',false,'GEND'],
+	['3','3',false,'GEND'],
+	['4','7',false,'GEND'],
+	['5','5',false,'GEND'],
+	['6','4',false,'GEND'],
+	['7','9',false,'GEND'],
+	['8','4',false,'GEND'],
+	['9','2',false,'GEND'],
+	['10','2',false,'GEND'],
+	['11','0',false,'GCOM57']
+];
+var g_mngmenuinfo = [
+	['GCOM56','1','추카추카!','1','N','xxxyel','',''],
+	['GCOM54','1','마스터후원하기','0','N','조광연(evamana)','',''],
+	['GCOM19','1','자기정보관리','0','N','','',''],
+	['GCOM14','1','회원정보검색','0','N','류희수(soulpatrol)','',''],
+	['GCOM21','1','초대하기','0','N','','',''],
+	['GMAN00','1','커뮤니티관리','0','N','','',''],
+	['GMAN05','1','용량 관리','0','Y','','','']
+];
+var g_getc02info = [
+
+];
+var g_layername, g_layerusercnt;
+</script>
+
+<script>userIDList[0] = 'xxxyel';
+userNameList[0] = 'M03N박지수';
+</script>
+
+<script LANGUAGE="JavaScript" SRC="/js/UserMenu.js"></script>
+<script LANGUAGE="JavaScript" SRC="/js/ComItem/ComMenuCommon.js"></script>
+
+<script LANGUAGE="JavaScript">
+function goUpNDown(strdir, layerName) {
+	if (typeof FL_chatContents  == "object") {
+		var tt = eval(FL_chatContents.scrollHeight/FL_chatContents.offsetHeight);
+		for(var i=0;i<tt;i++) {
+			layerName.doScroll(strdir);
+		}
+	}
+}
+</script>
+<script LANGUAGE="JScript" FOR="FreechalOn" EVENT="OnUserEnter(userid, nickname)">
+	var nickname;
+
+	for(i=0;i<userIDList.length;i++) {
+		if (userIDList[i] == null || userIDList[i] == '' ) {
+			userIDList[i] = userid;
+			userNameList[i] = nickname;
+			break;
+		}
+	}
+	makeList('xxxyel','박지수', g_layername, g_layerusercnt, 'mlink');
+	goUpNDown('pageUp', g_layername);
+</script>
+<script LANGUAGE="JScript" FOR="FreechalOn" EVENT="OnUserLeave(userid)">
+	var nickname;
+
+	for(i=0;i<userIDList.length;i++) {
+		if (userIDList[i] == userid ) {
+			nickname = userNameList[i];
+			userIDList[i] = null;
+			userNameList[i] = null;
+			break;
+		}
+	}
+	makeList('xxxyel','박지수', g_layername, g_layerusercnt, 'mlink');
+	goUpNDown('pageUp', g_layername);
+</script>
+
+<script language="javascript">
+	var strFreComl = document.body.clientWidth/2-130;
+	var strFreComt = document.body.clientHeight/2-80;
+	var strFreComUrl = g_commsvr + "/Base/MyComty/MyComtyAdd.asp?grpid=" + g_curgrpid + "&rtnURL=http%3A%2F%2Fcommunity%2Efreechal%2Ecom%2FComService%2FActivity%2FAlbum%2FCsPhotoList%2Easp%3FGrpId%3D509950%26ObjSeq%3D1%26grpurl%3Dssowhat";
+</script>
+<script language="javascript" SRC="/js/ComItem/ComMenu.js"></script>		<!-- 좌측 메뉴 영역  End -->
+<div id="IC_wrap">
+<!-- 중앙 컨텐츠 영역 Start -->
+<div id="SubTopLine"><!-- 상단 라인 --></div>
+<div id="AC_wrap">
+	<!--------------------------------------------------------------->
+
+	<div id="ContentsMain">
+		
+<script Language="JavaScript">
+var popupWin = null;
+
+//Admin Popup창 띄우기
+function AdminPopup(flag) {
+	if (flag == "true") {
+		var winOption = 'width=370,height=500,fullscreen=no,titlebar=no,toolbar=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=no';
+		var popupUrl = 'http://community.freechal.com/ComService/Admin/CsAdminPopup.asp?GrpId=509950&Objid=GCOM13&Objseq=1&objicon=&returnUrl=http://community.freechal.com/ComService/Activity/Album/CsPhotoList.asp';
+		popupWin = window.open(popupUrl, 'AdminSet', winOption);
+	} else {alert("Admin 팝업을 사용하실 수 없는 기능입니다.")}
+}
+</script>
+
+
+<script	language="javascript">
+function adjustImage(target_img)
+{
+	var newHeight, newWidth;
+	var newImg;
+
+	var maxWidth = 100;
+	var maxHeight = 100;
+
+
+	newImg = new Image();
+	newImg.src = target_img.src;
+	imgw = newImg.width;
+	imgh = newImg.height;
+
+	if (imgw > maxWidth || imgh > maxHeight) {
+		if(imgw > imgh) {
+			if(imgw > maxWidth)
+				newWidth = maxWidth;
+			else
+				newWidth = imgw;
+			newHeight = Math.round((imgh*newWidth)/imgw);
+		} else {
+			if(imgh > maxHeight)
+				newHeight = maxHeight;
+			else
+				newHeight = imgh;
+			newWidth = Math.round((imgw*newHeight)/imgh);
+		}
+	} else {
+		newWidth = imgw;
+		newHeight = imgh;
+	}
+
+	if (newWidth > 0 && newHeight > 0) {
+		target_img.width = newWidth;
+		target_img.height = newHeight;
+	}
+}
+
+function SearchList(){
+	if (CheckStrLen(document.SearchForm.Search, 1,"") == false)
+		window.location.href = "CsPhotoSchList.asp?GrpId=509950&ObjSeq=1&search=" + escape(document.SearchForm.Search.value);
+	else
+		alert("검색어는 영문2자 혹은 한글1자를 넘어야 합니다.");
+}
+
+function OpenNew(){
+	window.open("http://pims.freechal.com/myfreechal/PowerAlim/BBSAddOnePopup.asp?Grpid=509950&ObjSeq=1&Objid=GCOM13", "", "fullscreen=no,titlebar=no,toolbar=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=no,width=420,height=250")
+}
+
+function ReplyList(lngSeqNo, lngImgNo, strWriterId) {
+	window.open("CsPhotoReplyList.asp?GrpId=509950&ObjSeq=1&SeqNo="+lngSeqNo+"&ImgNo="+lngImgNo+"&PageNo=1&WriterId="+strWriterId, "ReplyListWin2", "width=640, height=650");
+}
+
+function MoveArticle() {
+	var strSeqNo = "";
+
+	if (document.ListForm.SeqNo != null) {
+		if (document.ListForm.SeqNo.length == null && document.ListForm.SeqNo.checked) {
+			strSeqNo = "," + document.ListForm.SeqNo.value;
+		} else {
+			for (i = document.ListForm.SeqNo.length - 1; i >= 0; i--) {
+				if (document.ListForm.SeqNo[i].checked) strSeqNo = strSeqNo + "," + document.ListForm.SeqNo[i].value;
+			}
+		}
+		strSeqNo = strSeqNo.substring(1, strSeqNo.length);
+	}
+
+	if (strSeqNo == "") {
+		alert('복사할 게시물을 선택해주세요.');
+		return;
+	}
+
+	window.open("CsPhotoMoveFrame.asp?GrpId=509950&ObjSeq=1&SeqNo=" + escape(strSeqNo), "MoveWin", "width=380,height=215");
+}
+
+function DeleteArticle() {
+	var strSeqNo = "";
+
+	if (document.ListForm.SeqNo != null) {
+		if (document.ListForm.SeqNo.length == null && document.ListForm.SeqNo.checked) {
+			strSeqNo = "," + document.ListForm.SeqNo.value;
+		} else {
+			for (i = document.ListForm.SeqNo.length - 1; i >= 0; i--) {
+				if (document.ListForm.SeqNo[i].checked) strSeqNo = strSeqNo + "," + document.ListForm.SeqNo[i].value;
+			}
+		}
+		strSeqNo = strSeqNo.substring(1, strSeqNo.length);
+	}
+
+	if (strSeqNo == "") {
+		alert('삭제할 게시물을 선택해주세요.');
+		return;
+	}
+
+	if (confirm("삭제하시겠습니까?")) {
+		self.location.href = "CsPhotoDeleteScript.asp?GrpId=509950&ObjSeq=1&SeqNo=" + strSeqNo + "&PageNo=1&retURL=" + escape(self.location.href);
+	}
+}
+
+var	blnSelAll = false;
+
+function SelectArticleAll() {
+	blnSelAll = !blnSelAll;
+
+	if (document.ListForm.SeqNo != null) {
+		if (document.ListForm.SeqNo.length == null) {
+			document.ListForm.SeqNo.checked = blnSelAll;
+		} else {
+			for (i = 0; i < document.ListForm.SeqNo.length; i++) {
+				document.ListForm.SeqNo[i].checked = blnSelAll;
+			}
+		}
+	}
+}
+
+function SearchArticle() {
+	var strKeyword;
+	var strKeyField;
+	var strCond;
+	var objText
+
+	objText = document.SchForm.Keyword;
+	strKeyword = objText.value;
+	strKeyField = document.SchForm.SchType[document.SchForm.SchType.selectedIndex].value;
+
+	if (strKeyword.length == 0) {
+		alert("검색어를 입력하여 주십시오.");
+		objText.focus();
+		return;
+	} else if (strKeyField == "Title") {
+		if (strKeyword.length < 2) {
+			alert("검색어는 두 글자 이상이어야 합니다.");
+			objText.focus();
+			return;
+		} else {
+			strCond = "&Title=" + escape(strKeyword);
+		}
+	} else if (strKeyField == "Id") {
+		if (strKeyword.length < 4) {
+			alert("ID는 네 글자 이상이어야 합니다.");
+			objText.focus();
+			return;
+		} else {
+			strCond = "&Id=" + escape(strKeyword);
+		}
+	} else if (strKeyField == "Name") {
+		if (strKeyword.length < 2) {
+			alert("이름은 두 글자 이상이어야 합니다.");
+			objText.focus();
+			return;
+		} else {
+			strCond = "&Name=" + escape(strKeyword);
+		}
+	} else if (strKeyField == "Date") {
+		if (checkDate(strKeyword) == false) {
+			alert("날짜가 잘못되었습니다.\n예) 2002/9/26");
+			objText.focus();
+			return;
+		} else {
+			strCond = "&FromDate=" + escape(strKeyword) + "&ToDate=" + escape(strKeyword);
+		}
+	} else {
+		strCond = "&FromNo=" + escape(strKeyword) + "&ToNo=" + escape(strKeyword);
+	}
+
+	document.location.href = "CsPhotoSchList.asp?GrpId=509950&ObjSeq=1" + strCond;
+}
+
+function CheckKeyCode() {
+	if (event.keyCode == 13) {
+		SearchArticle();
+	}
+}
+
+function OpenSrchWindow() {
+	winChild = window.open("CsPhotoSrchForm.asp?GrpId=509950&ObjSeq=1", "SrchWin", "left=" + ((window.screen.availWidth - 400) / 2) + ",top=" + ((window.screen.availHeight - 272) / 2) + ",width=400,height=272,directories=no,toolbar=no,status=no,resizable=no,scrollbars=no");
+}
+
+function OpenSlideShow() {
+
+	winChild = window.open("http://community.freechal.com/ComService/Activity/Album/CsPhotoSlideShow.asp?GrpId=509950&ObjSeq=1&SeqNo=2436", "SlideWin", "left=" + ((window.screen.availWidth - 800) / 2) + ",top=" + ((window.screen.availHeight - 600) / 2) + ",width=800,height=670,directories=no,toolbar=no,status=no,resizable=yes,scrollbars=no");
+
+}
+
+function OpenStampWindow() {
+	window.open("http://community.freechal.com/ComService/Activity/album/CsPhotoStampForm.asp?GrpId=509950&ObjSeq=1", "StampWin", "location=no, menubar=no, status=no, toolbar=no, width=640, height=300");
+}
+
+</script>
+<!-- Title Bar -->
+
+
+<!-- 서브 컨텐츠 내용 -->
+<div class="BoardTitle" id="BoardTitle">
+	<span id="BoardTitleImg"><img src=" http://image.freechal.com/community/common/white/ico_b09.gif" align="absmiddle"></span>So What 사진첩
+<a href="JavaScript:AdminPopup('true')"><img src="http://image.freechal.com/community/common/white/btn_board_set.gif" align="absmiddle"></a></div>
+
+
+<!-- Image List -->
+<div id="AlbumTdList">
+	<table>
+<form name="ListForm">
+<input type="hidden" name="GrpId" value="509950">
+<input type="hidden" name="ObjSeq" value="1">
+		<tr>
+			<td class="img">
+
+	<table class="img-box">
+		<tr><td><a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2436&PageNo=1"><img border="0" alt="20110309스트릿" src="http://album.freechal.com/ComService/Activity/Album/GetImage.asp?grpid=509950&objseq=1&file=th%5F2436%5FIMG%5F0358%2Ejpg"></a></td></tr>
+	</table>
+	<table class="img-txt">
+		<tr><td class="subject"><span class="chk"><input type="checkbox" name="SeqNo" value="2436"></span>&nbsp;<a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2436&PageNo=1">20110309스트릿</a><span class="cmt">[1]</span></td></tr>
+		<tr><td class="ab_name">
+<span onclick="ContextMenu.initMenu('xxxyel','박지수','rammy77','김보람','S',this);setHpAccessLog('HpLog_DropDown');" style="cursor:pointer;">김보람</span>
+		</td></tr>
+		<tr><td class="ab_date"><span class="date">2011-03-09</span> | <span class="hit">145</span></td></tr>
+	</table>
+			</td>
+			<td class="nb22"></td>
+			<td class="img">
+
+	<table class="img-box">
+		<tr><td><a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2435&PageNo=1"><img border="0" alt="20110309스트릿" src="http://album.freechal.com/ComService/Activity/Album/GetImage.asp?grpid=509950&objseq=1&file=th%5F2435%5FIMG%5F0356%2Ejpg"></a></td></tr>
+	</table>
+	<table class="img-txt">
+		<tr><td class="subject"><span class="chk"><input type="checkbox" name="SeqNo" value="2435"></span>&nbsp;<a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2435&PageNo=1">20110309스트릿</a><span class="cmt">[3]</span></td></tr>
+		<tr><td class="ab_name">
+<span onclick="ContextMenu.initMenu('xxxyel','박지수','rammy77','김보람','S',this);setHpAccessLog('HpLog_DropDown');" style="cursor:pointer;">김보람</span>
+		</td></tr>
+		<tr><td class="ab_date"><span class="date">2011-03-09</span> | <span class="hit">100</span></td></tr>
+	</table>
+			</td>
+			<td class="nb22"></td>
+			<td class="img">
+
+	<table class="img-box">
+		<tr><td><a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2434&PageNo=1"><img border="0" alt="전기과의 위" src="http://album.freechal.com/ComService/Activity/Album/GetImage.asp?grpid=509950&objseq=1&file=th%5F2434%5FIMG%5F0354%2Ejpg"></a></td></tr>
+	</table>
+	<table class="img-txt">
+		<tr><td class="subject"><span class="chk"><input type="checkbox" name="SeqNo" value="2434"></span>&nbsp;<a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2434&PageNo=1">전기과의 위</a><span class="cmt">[1]</span></td></tr>
+		<tr><td class="ab_name">
+<span onclick="ContextMenu.initMenu('xxxyel','박지수','rammy77','김보람','S',this);setHpAccessLog('HpLog_DropDown');" style="cursor:pointer;">김보람</span>
+		</td></tr>
+		<tr><td class="ab_date"><span class="date">2011-03-09</span> | <span class="hit">74</span></td></tr>
+	</table>
+			</td>
+			<td class="nb22"></td>
+			<td class="img">
+
+	<table class="img-box">
+		<tr><td><a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2433&PageNo=1"><img border="0" alt="동방생파" src="http://album.freechal.com/ComService/Activity/Album/GetImage.asp?grpid=509950&objseq=1&file=th%5F2433%5FIMG%5F0345%2Ejpg"></a></td></tr>
+	</table>
+	<table class="img-txt">
+		<tr><td class="subject"><span class="chk"><input type="checkbox" name="SeqNo" value="2433"></span>&nbsp;<a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2433&PageNo=1">동방생파</a><span class="cmt">[1]</span></td></tr>
+		<tr><td class="ab_name">
+<span onclick="ContextMenu.initMenu('xxxyel','박지수','rammy77','김보람','S',this);setHpAccessLog('HpLog_DropDown');" style="cursor:pointer;">김보람</span>
+		</td></tr>
+		<tr><td class="ab_date"><span class="date">2011-03-09</span> | <span class="hit">58</span></td></tr>
+	</table>
+			</td>
+			<td class="nb22"></td>
+			<td class="img">
+
+	<table class="img-box">
+		<tr><td><a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2432&PageNo=1"><img border="0" alt="3/7" src="http://album.freechal.com/ComService/Activity/Album/GetImage.asp?grpid=509950&objseq=1&file=th%5F2432%5FP1110085%5Fs%2Ejpg"></a></td></tr>
+	</table>
+	<table class="img-txt">
+		<tr><td class="subject"><span class="chk"><input type="checkbox" name="SeqNo" value="2432"></span>&nbsp;<a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2432&PageNo=1">3/7</a><span class="cmt">[4]</span></td></tr>
+		<tr><td class="ab_name">
+<span onclick="ContextMenu.initMenu('xxxyel','박지수','stormz','신재영','S',this);setHpAccessLog('HpLog_DropDown');" style="cursor:pointer;">신재영</span>
+		</td></tr>
+		<tr><td class="ab_date"><span class="date">2011-03-08</span> | <span class="hit">104</span></td></tr>
+	</table>
+			</td>
+		</tr>
+		<tr>
+			<td class="img">
+
+	<table class="img-box">
+		<tr><td><a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2431&PageNo=1"><img border="0" alt="3/7" src="http://album.freechal.com/ComService/Activity/Album/GetImage.asp?grpid=509950&objseq=1&file=th%5F2431%5FP1110052%5Fs%2Ejpg"></a></td></tr>
+	</table>
+	<table class="img-txt">
+		<tr><td class="subject"><span class="chk"><input type="checkbox" name="SeqNo" value="2431"></span>&nbsp;<a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2431&PageNo=1">3/7</a><span class="cmt">[3]</span></td></tr>
+		<tr><td class="ab_name">
+<span onclick="ContextMenu.initMenu('xxxyel','박지수','stormz','신재영','S',this);setHpAccessLog('HpLog_DropDown');" style="cursor:pointer;">신재영</span>
+		</td></tr>
+		<tr><td class="ab_date"><span class="date">2011-03-08</span> | <span class="hit">107</span></td></tr>
+	</table>
+			</td>
+			<td class="nb22"></td>
+			<td class="img">
+
+	<table class="img-box">
+		<tr><td><a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2430&PageNo=1"><img border="0" alt="3/7" src="http://album.freechal.com/ComService/Activity/Album/GetImage.asp?grpid=509950&objseq=1&file=th%5F2430%5FP1110022%5Fs%2Ejpg"></a></td></tr>
+	</table>
+	<table class="img-txt">
+		<tr><td class="subject"><span class="chk"><input type="checkbox" name="SeqNo" value="2430"></span>&nbsp;<a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2430&PageNo=1">3/7</a><span class="cmt">[5]</span></td></tr>
+		<tr><td class="ab_name">
+<span onclick="ContextMenu.initMenu('xxxyel','박지수','stormz','신재영','S',this);setHpAccessLog('HpLog_DropDown');" style="cursor:pointer;">신재영</span>
+		</td></tr>
+		<tr><td class="ab_date"><span class="date">2011-03-08</span> | <span class="hit">112</span></td></tr>
+	</table>
+			</td>
+			<td class="nb22"></td>
+			<td class="img">
+
+	<table class="img-box">
+		<tr><td><a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2429&PageNo=1"><img border="0" alt="전설의 기타리…" src="http://album.freechal.com/ComService/Activity/Album/GetImage.asp?grpid=509950&objseq=1&file=th%5F2429%5F%BE%E7%C1%BE%2Ejpg"></a></td></tr>
+	</table>
+	<table class="img-txt">
+		<tr><td class="subject"><span class="chk"><input type="checkbox" name="SeqNo" value="2429"></span>&nbsp;<a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2429&PageNo=1">전설의 기타리…</a><span class="cmt">[16]</span></td></tr>
+		<tr><td class="ab_name">
+<span onclick="ContextMenu.initMenu('xxxyel','박지수','kim_durid','김도영','S',this);setHpAccessLog('HpLog_DropDown');" style="cursor:pointer;">김도영</span>
+		</td></tr>
+		<tr><td class="ab_date"><span class="date">2011-03-06</span> | <span class="hit">183</span></td></tr>
+	</table>
+			</td>
+			<td class="nb22"></td>
+			<td class="img">
+
+	<table class="img-box">
+		<tr><td><a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2428&PageNo=1"><img border="0" alt="시간표" src="http://album.freechal.com/ComService/Activity/Album/GetImage.asp?grpid=509950&objseq=1&file=th%5F2428%5F%2D%2EJPG"></a></td></tr>
+	</table>
+	<table class="img-txt">
+		<tr><td class="subject"><span class="chk"><input type="checkbox" name="SeqNo" value="2428"></span>&nbsp;<a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2428&PageNo=1">시간표</a><span class="cmt">[3]</span></td></tr>
+		<tr><td class="ab_name">
+<span onclick="ContextMenu.initMenu('xxxyel','박지수','albireo90','이소영','S',this);setHpAccessLog('HpLog_DropDown');" style="cursor:pointer;">이소영</span>
+		</td></tr>
+		<tr><td class="ab_date"><span class="date">2011-03-06</span> | <span class="hit">63</span></td></tr>
+	</table>
+			</td>
+			<td class="nb22"></td>
+			<td class="img">
+
+	<table class="img-box">
+		<tr><td><a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2427&PageNo=1"><img border="0" alt="나의 시간표!" src="http://album.freechal.com/ComService/Activity/Album/GetImage.asp?grpid=509950&objseq=1&file=th%5F2427%5F%BD%C3%B0%A3%C7%A5%2Ejpg"></a></td></tr>
+	</table>
+	<table class="img-txt">
+		<tr><td class="subject"><span class="chk"><input type="checkbox" name="SeqNo" value="2427"></span>&nbsp;<a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2427&PageNo=1">나의 시간표!</a><span class="cmt">[2]</span></td></tr>
+		<tr><td class="ab_name">
+<span onclick="ContextMenu.initMenu('xxxyel','박지수','heon319','장헌수','S',this);setHpAccessLog('HpLog_DropDown');" style="cursor:pointer;">장헌수</span>
+		</td></tr>
+		<tr><td class="ab_date"><span class="date">2011-03-06</span> | <span class="hit">54</span></td></tr>
+	</table>
+			</td>
+		</tr>
+		<tr>
+			<td class="img">
+
+	<table class="img-box">
+		<tr><td><a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2426&PageNo=1"><img border="0" alt="시간표입니다!" src="http://album.freechal.com/ComService/Activity/Album/GetImage.asp?grpid=509950&objseq=1&file=th%5F2426%5F%BD%C3%B0%A3%C7%A5%21%2Ejpg"></a></td></tr>
+	</table>
+	<table class="img-txt">
+		<tr><td class="subject"><span class="chk"><input type="checkbox" name="SeqNo" value="2426"></span>&nbsp;<a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2426&PageNo=1">시간표입니다!</a><span class="cmt">[1]</span></td></tr>
+		<tr><td class="ab_name">
+<span onclick="ContextMenu.initMenu('xxxyel','박지수','gini7030','윤현정','S',this);setHpAccessLog('HpLog_DropDown');" style="cursor:pointer;">윤현정</span>
+		</td></tr>
+		<tr><td class="ab_date"><span class="date">2011-03-06</span> | <span class="hit">34</span></td></tr>
+	</table>
+			</td>
+			<td class="nb22"></td>
+			<td class="img">
+
+	<table class="img-box">
+		<tr><td><a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2425&PageNo=1"><img border="0" alt="시간표" src="http://album.freechal.com/ComService/Activity/Album/GetImage.asp?grpid=509950&objseq=1&file=th%5F2425%5F%BD%C3%B0%A3%C7%A5%2EJPG"></a></td></tr>
+	</table>
+	<table class="img-txt">
+		<tr><td class="subject"><span class="chk"><input type="checkbox" name="SeqNo" value="2425"></span>&nbsp;<a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2425&PageNo=1">시간표</a><span class="cmt">[4]</span></td></tr>
+		<tr><td class="ab_name">
+<span onclick="ContextMenu.initMenu('xxxyel','박지수','realslower','이재경','S',this);setHpAccessLog('HpLog_DropDown');" style="cursor:pointer;">이재경</span>
+		</td></tr>
+		<tr><td class="ab_date"><span class="date">2011-03-05</span> | <span class="hit">62</span></td></tr>
+	</table>
+			</td>
+			<td class="nb22"></td>
+			<td class="img">
+
+	<table class="img-box">
+		<tr><td><a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2424&PageNo=1"><img border="0" alt="동박공연" src="http://album.freechal.com/ComService/Activity/Album/GetImage.asp?grpid=509950&objseq=1&file=th%5F2424%5F%C5%A9%B1%E2%BA%AF%C8%AF%5FIMG%5F9913%2EJPG"></a></td></tr>
+	</table>
+	<table class="img-txt">
+		<tr><td class="subject"><span class="chk"><input type="checkbox" name="SeqNo" value="2424"></span>&nbsp;<a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2424&PageNo=1">동박공연</a><span class="cmt">[6]</span></td></tr>
+		<tr><td class="ab_name">
+<span onclick="ContextMenu.initMenu('xxxyel','박지수','kim_durid','김도영','S',this);setHpAccessLog('HpLog_DropDown');" style="cursor:pointer;">김도영</span>
+		</td></tr>
+		<tr><td class="ab_date"><span class="date">2011-03-05</span> | <span class="hit">97</span></td></tr>
+	</table>
+			</td>
+			<td class="nb22"></td>
+			<td class="img">
+
+	<table class="img-box">
+		<tr><td><a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2423&PageNo=1"><img border="0" alt="식안표" src="http://album.freechal.com/ComService/Activity/Album/GetImage.asp?grpid=509950&objseq=1&file=th%5F2423%5F%BD%C4%BE%C8%C7%A5%7E1%2EJPG"></a></td></tr>
+	</table>
+	<table class="img-txt">
+		<tr><td class="subject"><span class="chk"><input type="checkbox" name="SeqNo" value="2423"></span>&nbsp;<a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2423&PageNo=1">식안표</a><span class="cmt">[3]</span></td></tr>
+		<tr><td class="ab_name">
+<span onclick="ContextMenu.initMenu('xxxyel','박지수','daackcho','심은영','S',this);setHpAccessLog('HpLog_DropDown');" style="cursor:pointer;">심은영</span>
+		</td></tr>
+		<tr><td class="ab_date"><span class="date">2011-03-05</span> | <span class="hit">44</span></td></tr>
+	</table>
+			</td>
+			<td class="nb22"></td>
+			<td class="img">
+
+	<table class="img-box">
+		<tr><td><a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2422&PageNo=1"><img border="0" alt="신의 위로" src="http://album.freechal.com/ComService/Activity/Album/GetImage.asp?grpid=509950&objseq=1&file=th%5F2422%5Ftimetable%2EJPG"></a></td></tr>
+	</table>
+	<table class="img-txt">
+		<tr><td class="subject"><span class="chk"><input type="checkbox" name="SeqNo" value="2422"></span>&nbsp;<a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2422&PageNo=1">신의 위로</a><span class="cmt">[2]</span></td></tr>
+		<tr><td class="ab_name">
+<span onclick="ContextMenu.initMenu('xxxyel','박지수','cgkang070','강찬교','S',this);setHpAccessLog('HpLog_DropDown');" style="cursor:pointer;">강찬교</span>
+		</td></tr>
+		<tr><td class="ab_date"><span class="date">2011-03-04</span> | <span class="hit">67</span></td></tr>
+	</table>
+			</td>
+		</tr>
+		<tr>
+			<td class="img">
+
+	<table class="img-box">
+		<tr><td><a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2421&PageNo=1"><img border="0" alt="드디어 올킬 성공" src="http://album.freechal.com/ComService/Activity/Album/GetImage.asp?grpid=509950&objseq=1&file=th%5F2421%5F3%C7%D0%B3%E2+2%C7%D0%B1%E2+%BD%C3%B0%A3%C7%A5%2EJPG"></a></td></tr>
+	</table>
+	<table class="img-txt">
+		<tr><td class="subject"><span class="chk"><input type="checkbox" name="SeqNo" value="2421"></span>&nbsp;<a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2421&PageNo=1">드디어 올킬 성공</a><span class="cmt">[7]</span></td></tr>
+		<tr><td class="ab_name">
+<span onclick="ContextMenu.initMenu('xxxyel','박지수','plpenian','김현수','S',this);setHpAccessLog('HpLog_DropDown');" style="cursor:pointer;">김현수</span>
+		</td></tr>
+		<tr><td class="ab_date"><span class="date">2011-03-04</span> | <span class="hit">80</span></td></tr>
+	</table>
+			</td>
+			<td class="nb22"></td>
+			<td class="img">
+
+	<table class="img-box">
+		<tr><td><a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2420&PageNo=1"><img width="100" height="100" border="0" alt="시간표임당" src="http://album.freechal.com/ComService/Activity/Album/GetImage.asp?grpid=509950&objseq=1&file=2420%5FK%2D5%2Epng" onLoad="adjustImage(this)"></a></td></tr>
+	</table>
+	<table class="img-txt">
+		<tr><td class="subject"><span class="chk"><input type="checkbox" name="SeqNo" value="2420"></span>&nbsp;<a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2420&PageNo=1">시간표임당</a><span class="cmt">[4]</span></td></tr>
+		<tr><td class="ab_name">
+<span onclick="ContextMenu.initMenu('xxxyel','박지수','ywj1022','정용욱','S',this);setHpAccessLog('HpLog_DropDown');" style="cursor:pointer;">정용욱</span>
+		</td></tr>
+		<tr><td class="ab_date"><span class="date">2011-03-02</span> | <span class="hit">84</span></td></tr>
+	</table>
+			</td>
+			<td class="nb22"></td>
+			<td class="img">
+
+	<table class="img-box">
+		<tr><td><a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2419&PageNo=1"><img width="100" height="100" border="0" alt="하루에 승부를 …" src="http://album.freechal.com/ComService/Activity/Album/GetImage.asp?grpid=509950&objseq=1&file=2419%5F2%2D1%2Epng" onLoad="adjustImage(this)"></a></td></tr>
+	</table>
+	<table class="img-txt">
+		<tr><td class="subject"><span class="chk"><input type="checkbox" name="SeqNo" value="2419"></span>&nbsp;<a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2419&PageNo=1">하루에 승부를 …</a><span class="cmt">[9]</span></td></tr>
+		<tr><td class="ab_name">
+<span onclick="ContextMenu.initMenu('xxxyel','박지수','jueun305','이주은','S',this);setHpAccessLog('HpLog_DropDown');" style="cursor:pointer;">이주은</span>
+		</td></tr>
+		<tr><td class="ab_date"><span class="date">2011-03-02</span> | <span class="hit">123</span></td></tr>
+	</table>
+			</td>
+			<td class="nb22"></td>
+			<td class="img">
+
+	<table class="img-box">
+		<tr><td><a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2418&PageNo=1"><img width="100" height="100" border="0" alt="승연이의 시간표" src="http://album.freechal.com/ComService/Activity/Album/GetImage.asp?grpid=509950&objseq=1&file=2418%5F2%C7%D0%B3%E21%C7%D0%B1%E2%2Epng" onLoad="adjustImage(this)"></a></td></tr>
+	</table>
+	<table class="img-txt">
+		<tr><td class="subject"><span class="chk"><input type="checkbox" name="SeqNo" value="2418"></span>&nbsp;<a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2418&PageNo=1">승연이의 시간표</a><span class="cmt">[3]</span></td></tr>
+		<tr><td class="ab_name">
+<span onclick="ContextMenu.initMenu('xxxyel','박지수','dasomsla','한승연','S',this);setHpAccessLog('HpLog_DropDown');" style="cursor:pointer;">한승연</span>
+		</td></tr>
+		<tr><td class="ab_date"><span class="date">2011-03-02</span> | <span class="hit">56</span></td></tr>
+	</table>
+			</td>
+			<td class="nb22"></td>
+			<td class="img">
+
+	<table class="img-box">
+		<tr><td><a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2417&PageNo=1"><img width="100" height="100" border="0" alt="서경용 시간표" src="http://album.freechal.com/ComService/Activity/Album/GetImage.asp?grpid=509950&objseq=1&file=2417%5F%BF%EB%2Epng" onLoad="adjustImage(this)"></a></td></tr>
+	</table>
+	<table class="img-txt">
+		<tr><td class="subject"><span class="chk"><input type="checkbox" name="SeqNo" value="2417"></span>&nbsp;<a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2417&PageNo=1">서경용 시간표</a><span class="cmt">[3]</span></td></tr>
+		<tr><td class="ab_name">
+<span onclick="ContextMenu.initMenu('xxxyel','박지수','rammy77','김보람','S',this);setHpAccessLog('HpLog_DropDown');" style="cursor:pointer;">김보람</span>
+		</td></tr>
+		<tr><td class="ab_date"><span class="date">2011-03-02</span> | <span class="hit">55</span></td></tr>
+	</table>
+			</td>
+		</tr>
+		<tr>
+			<td class="img">
+
+	<table class="img-box">
+		<tr><td><a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2416&PageNo=1"><img border="0" alt="조현철이 시간…" src="http://album.freechal.com/ComService/Activity/Album/GetImage.asp?grpid=509950&objseq=1&file=th%5F2416%5F%BB%E7%BF%EB%C0%DA+%C1%F6%C1%A4+1%2Ejpg"></a></td></tr>
+	</table>
+	<table class="img-txt">
+		<tr><td class="subject"><span class="chk"><input type="checkbox" name="SeqNo" value="2416"></span>&nbsp;<a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2416&PageNo=1">조현철이 시간…</a><span class="cmt">[2]</span></td></tr>
+		<tr><td class="ab_name">
+<span onclick="ContextMenu.initMenu('xxxyel','박지수','luisekr','조현철','S',this);setHpAccessLog('HpLog_DropDown');" style="cursor:pointer;">조현철</span>
+		</td></tr>
+		<tr><td class="ab_date"><span class="date">2011-03-01</span> | <span class="hit">55</span></td></tr>
+	</table>
+			</td>
+			<td class="nb22"></td>
+			<td class="img">
+
+	<table class="img-box">
+		<tr><td><a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2415&PageNo=1"><img border="0" alt="시간표 수정&amp;#4…" src="http://album.freechal.com/ComService/Activity/Album/GetImage.asp?grpid=509950&objseq=1&file=th%5F2415%5FZ%2Ejpg"></a></td></tr>
+	</table>
+	<table class="img-txt">
+		<tr><td class="subject"><span class="chk"><input type="checkbox" name="SeqNo" value="2415"></span>&nbsp;<a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2415&PageNo=1">시간표 수정&#4…</a><span class="cmt">[2]</span></td></tr>
+		<tr><td class="ab_name">
+<span onclick="ContextMenu.initMenu('xxxyel','박지수','jiyeon8781','손지연','S',this);setHpAccessLog('HpLog_DropDown');" style="cursor:pointer;">손지연</span>
+		</td></tr>
+		<tr><td class="ab_date"><span class="date">2011-03-01</span> | <span class="hit">43</span></td></tr>
+	</table>
+			</td>
+			<td class="nb22"></td>
+			<td class="img">
+
+	<table class="img-box">
+		<tr><td><a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2414&PageNo=1"><img width="100" height="100" border="0" alt="이한빈 시간표" src="http://album.freechal.com/ComService/Activity/Album/GetImage.asp?grpid=509950&objseq=1&file=2414%5F%C3%D6%C1%BE%BD%C3%B0%A3%C7%A5%2EPNG" onLoad="adjustImage(this)"></a></td></tr>
+	</table>
+	<table class="img-txt">
+		<tr><td class="subject"><span class="chk"><input type="checkbox" name="SeqNo" value="2414"></span>&nbsp;<a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2414&PageNo=1">이한빈 시간표</a></td></tr>
+		<tr><td class="ab_name">
+<span onclick="ContextMenu.initMenu('xxxyel','박지수','rammy77','김보람','S',this);setHpAccessLog('HpLog_DropDown');" style="cursor:pointer;">김보람</span>
+		</td></tr>
+		<tr><td class="ab_date"><span class="date">2011-03-01</span> | <span class="hit">37</span></td></tr>
+	</table>
+			</td>
+			<td class="nb22"></td>
+			<td class="img">
+
+	<table class="img-box">
+		<tr><td><a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2413&PageNo=1"><img width="100" height="100" border="0" alt="봉창스이간표" src="http://album.freechal.com/ComService/Activity/Album/GetImage.asp?grpid=509950&objseq=1&file=2413%5F%C4%B8%C3%B3%2EPNG" onLoad="adjustImage(this)"></a></td></tr>
+	</table>
+	<table class="img-txt">
+		<tr><td class="subject"><span class="chk"><input type="checkbox" name="SeqNo" value="2413"></span>&nbsp;<a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2413&PageNo=1">봉창스이간표</a><span class="cmt">[4]</span></td></tr>
+		<tr><td class="ab_name">
+<span onclick="ContextMenu.initMenu('xxxyel','박지수','su1324','강동주','S',this);setHpAccessLog('HpLog_DropDown');" style="cursor:pointer;">강동주</span>
+		</td></tr>
+		<tr><td class="ab_date"><span class="date">2011-03-01</span> | <span class="hit">59</span></td></tr>
+	</table>
+			</td>
+			<td class="nb22"></td>
+			<td class="img">
+
+	<table class="img-box">
+		<tr><td><a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2412&PageNo=1"><img width="100" height="100" border="0" alt="김국한 시간표" src="http://album.freechal.com/ComService/Activity/Album/GetImage.asp?grpid=509950&objseq=1&file=2412%5Fyonseiapp%5Ftimetable%2Epng" onLoad="adjustImage(this)"></a></td></tr>
+	</table>
+	<table class="img-txt">
+		<tr><td class="subject"><span class="chk"><input type="checkbox" name="SeqNo" value="2412"></span>&nbsp;<a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2412&PageNo=1">김국한 시간표</a><span class="cmt">[9]</span></td></tr>
+		<tr><td class="ab_name">
+<span onclick="ContextMenu.initMenu('xxxyel','박지수','wazyt','김국한','S',this);setHpAccessLog('HpLog_DropDown');" style="cursor:pointer;">김국한</span>
+		</td></tr>
+		<tr><td class="ab_date"><span class="date">2011-02-28</span> | <span class="hit">86</span></td></tr>
+	</table>
+			</td>
+		</tr>
+		<tr>
+			<td class="img">
+
+	<table class="img-box">
+		<tr><td><a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2411&PageNo=1"><img border="0" alt="보라무 시간표" src="http://album.freechal.com/ComService/Activity/Album/GetImage.asp?grpid=509950&objseq=1&file=th%5F2411%5F2011%2D1%BD%C3%B0%A3%C7%A5%A4%B7%A4%B7%2EJPG"></a></td></tr>
+	</table>
+	<table class="img-txt">
+		<tr><td class="subject"><span class="chk"><input type="checkbox" name="SeqNo" value="2411"></span>&nbsp;<a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2411&PageNo=1">보라무 시간표</a><span class="cmt">[7]</span></td></tr>
+		<tr><td class="ab_name">
+<span onclick="ContextMenu.initMenu('xxxyel','박지수','rammy77','김보람','S',this);setHpAccessLog('HpLog_DropDown');" style="cursor:pointer;">김보람</span>
+		</td></tr>
+		<tr><td class="ab_date"><span class="date">2011-02-27</span> | <span class="hit">155</span></td></tr>
+	</table>
+			</td>
+			<td class="nb22"></td>
+			<td class="img">
+
+	<table class="img-box">
+		<tr><td><a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2410&PageNo=1"><img border="0" alt="군입대 예정자 …" src="http://album.freechal.com/ComService/Activity/Album/GetImage.asp?grpid=509950&objseq=1&file=th%5F2410%5F%C1%A4%BF%EB%BF%ED%2Ejpg"></a></td></tr>
+	</table>
+	<table class="img-txt">
+		<tr><td class="subject"><span class="chk"><input type="checkbox" name="SeqNo" value="2410"></span>&nbsp;<a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2410&PageNo=1">군입대 예정자 …</a><span class="cmt">[9]</span></td></tr>
+		<tr><td class="ab_name">
+<span onclick="ContextMenu.initMenu('xxxyel','박지수','kim_durid','김도영','S',this);setHpAccessLog('HpLog_DropDown');" style="cursor:pointer;">김도영</span>
+		</td></tr>
+		<tr><td class="ab_date"><span class="date">2011-02-25</span> | <span class="hit">139</span></td></tr>
+	</table>
+			</td>
+			<td class="nb22"></td>
+			<td class="img">
+
+	<table class="img-box">
+		<tr><td><a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2409&PageNo=1"><img border="0" alt="2011 02 18 감모" src="http://album.freechal.com/ComService/Activity/Album/GetImage.asp?grpid=509950&objseq=1&file=th%5F2409%5F2011+02+18+%B0%A8%B8%F0+083%2Ejpg"></a></td></tr>
+	</table>
+	<table class="img-txt">
+		<tr><td class="subject"><span class="chk"><input type="checkbox" name="SeqNo" value="2409"></span>&nbsp;<a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2409&PageNo=1">2011 02 18 감모</a><span class="cmt">[4]</span></td></tr>
+		<tr><td class="ab_name">
+<span onclick="ContextMenu.initMenu('xxxyel','박지수','rammy77','김보람','S',this);setHpAccessLog('HpLog_DropDown');" style="cursor:pointer;">김보람</span>
+		</td></tr>
+		<tr><td class="ab_date"><span class="date">2011-02-20</span> | <span class="hit">91</span></td></tr>
+	</table>
+			</td>
+			<td class="nb22"></td>
+			<td class="img">
+
+	<table class="img-box">
+		<tr><td><a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2408&PageNo=1"><img border="0" alt="겨울 놀이의 진수" src="http://album.freechal.com/ComService/Activity/Album/GetImage.asp?grpid=509950&objseq=1&file=th%5F2408%5FSAM%5F2681%2EJPG"></a></td></tr>
+	</table>
+	<table class="img-txt">
+		<tr><td class="subject"><span class="chk"><input type="checkbox" name="SeqNo" value="2408"></span>&nbsp;<a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2408&PageNo=1">겨울 놀이의 진수</a><span class="cmt">[5]</span></td></tr>
+		<tr><td class="ab_name">
+<span onclick="ContextMenu.initMenu('xxxyel','박지수','hahahomin','장호민','S',this);setHpAccessLog('HpLog_DropDown');" style="cursor:pointer;">장호민</span>
+		</td></tr>
+		<tr><td class="ab_date"><span class="date">2011-02-07</span> | <span class="hit">101</span></td></tr>
+	</table>
+			</td>
+			<td class="nb22"></td>
+			<td class="img">
+
+	<table class="img-box">
+		<tr><td><a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2407&PageNo=1"><img border="0" alt="생파와 총뒷" src="http://album.freechal.com/ComService/Activity/Album/GetImage.asp?grpid=509950&objseq=1&file=th%5F2407%5F%BB%FD%C6%C4%2B%C3%D1%C8%B8+011%2Ejpg"></a></td></tr>
+	</table>
+	<table class="img-txt">
+		<tr><td class="subject"><span class="chk"><input type="checkbox" name="SeqNo" value="2407"></span>&nbsp;<a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2407&PageNo=1">생파와 총뒷</a></td></tr>
+		<tr><td class="ab_name">
+<span onclick="ContextMenu.initMenu('xxxyel','박지수','rammy77','김보람','S',this);setHpAccessLog('HpLog_DropDown');" style="cursor:pointer;">김보람</span>
+		</td></tr>
+		<tr><td class="ab_date"><span class="date">2011-02-03</span> | <span class="hit">85</span></td></tr>
+	</table>
+			</td>
+		</tr>
+		<tr>
+			<td class="img">
+
+	<table class="img-box">
+		<tr><td><a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2406&PageNo=1"><img border="0" alt="일본여행" src="http://album.freechal.com/ComService/Activity/Album/GetImage.asp?grpid=509950&objseq=1&file=th%5F2406%5F%BB%E7%C1%F8+394%2Ejpg"></a></td></tr>
+	</table>
+	<table class="img-txt">
+		<tr><td class="subject"><span class="chk"><input type="checkbox" name="SeqNo" value="2406"></span>&nbsp;<a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2406&PageNo=1">일본여행</a><span class="cmt">[8]</span></td></tr>
+		<tr><td class="ab_name">
+<span onclick="ContextMenu.initMenu('xxxyel','박지수','teriuspark','박성관','S',this);setHpAccessLog('HpLog_DropDown');" style="cursor:pointer;">박성관</span>
+		</td></tr>
+		<tr><td class="ab_date"><span class="date">2011-02-03</span> | <span class="hit">114</span></td></tr>
+	</table>
+			</td>
+			<td class="nb22"></td>
+			<td class="img">
+
+	<table class="img-box">
+		<tr><td><a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2405&PageNo=1"><img width="100" height="100" border="0" alt="군생활을 괜찮…" src="http://album.freechal.com/ComService/Activity/Album/GetImage.asp?grpid=509950&objseq=1&file=2405%5F%B8%B8%B5%BF%B8%B8%B5%BF%2Epng" onLoad="adjustImage(this)"></a></td></tr>
+	</table>
+	<table class="img-txt">
+		<tr><td class="subject"><span class="chk"><input type="checkbox" name="SeqNo" value="2405"></span>&nbsp;<a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2405&PageNo=1">군생활을 괜찮…</a><span class="cmt">[10]</span></td></tr>
+		<tr><td class="ab_name">
+<span onclick="ContextMenu.initMenu('xxxyel','박지수','hahahomin','장호민','S',this);setHpAccessLog('HpLog_DropDown');" style="cursor:pointer;">장호민</span>
+		</td></tr>
+		<tr><td class="ab_date"><span class="date">2011-01-27</span> | <span class="hit">207</span></td></tr>
+	</table>
+			</td>
+			<td class="nb22"></td>
+			<td class="img">
+
+	<table class="img-box">
+		<tr><td><a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2404&PageNo=1"><img border="0" alt="Central Park W…" src="http://album.freechal.com/ComService/Activity/Album/GetImage.asp?grpid=509950&objseq=1&file=th%5F2404%5FDSCN8666%2EJPG"></a></td></tr>
+	</table>
+	<table class="img-txt">
+		<tr><td class="subject"><span class="chk"><input type="checkbox" name="SeqNo" value="2404"></span>&nbsp;<a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2404&PageNo=1">Central Park W…</a><span class="cmt">[7]</span></td></tr>
+		<tr><td class="ab_name">
+<span onclick="ContextMenu.initMenu('xxxyel','박지수','stub28','김영','S',this);setHpAccessLog('HpLog_DropDown');" style="cursor:pointer;">김영</span>
+		</td></tr>
+		<tr><td class="ab_date"><span class="date">2011-01-06</span> | <span class="hit">116</span></td></tr>
+	</table>
+			</td>
+			<td class="nb22"></td>
+			<td class="img">
+
+	<table class="img-box">
+		<tr><td><a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2403&PageNo=1"><img border="0" alt="2010년안녕" src="http://album.freechal.com/ComService/Activity/Album/GetImage.asp?grpid=509950&objseq=1&file=th%5F2403%5FSN153429%2EJPG"></a></td></tr>
+	</table>
+	<table class="img-txt">
+		<tr><td class="subject"><span class="chk"><input type="checkbox" name="SeqNo" value="2403"></span>&nbsp;<a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2403&PageNo=1">2010년안녕</a><span class="cmt">[5]</span></td></tr>
+		<tr><td class="ab_name">
+<span onclick="ContextMenu.initMenu('xxxyel','박지수','tadzio88','이지윤','S',this);setHpAccessLog('HpLog_DropDown');" style="cursor:pointer;">이지윤</span>
+		</td></tr>
+		<tr><td class="ab_date"><span class="date">2010-12-31</span> | <span class="hit">154</span></td></tr>
+	</table>
+			</td>
+			<td class="nb22"></td>
+			<td class="img">
+
+	<table class="img-box">
+		<tr><td><a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2402&PageNo=1"><img border="0" alt="백스테이지" src="http://album.freechal.com/ComService/Activity/Album/GetImage.asp?grpid=509950&objseq=1&file=th%5F2402%5FIMGP5468%2EJPG"></a></td></tr>
+	</table>
+	<table class="img-txt">
+		<tr><td class="subject"><span class="chk"><input type="checkbox" name="SeqNo" value="2402"></span>&nbsp;<a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2402&PageNo=1">백스테이지</a><span class="cmt">[4]</span></td></tr>
+		<tr><td class="ab_name">
+<span onclick="ContextMenu.initMenu('xxxyel','박지수','tadzio88','이지윤','S',this);setHpAccessLog('HpLog_DropDown');" style="cursor:pointer;">이지윤</span>
+		</td></tr>
+		<tr><td class="ab_date"><span class="date">2010-11-29</span> | <span class="hit">162</span></td></tr>
+	</table>
+			</td>
+		</tr>
+		<tr>
+			<td class="img">
+
+	<table class="img-box">
+		<tr><td><a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2401&PageNo=1"><img border="0" alt="2010 정기공연 …" src="http://album.freechal.com/ComService/Activity/Album/GetImage.asp?grpid=509950&objseq=1&file=th%5F2401%5F%C1%A4%B1%E2%B0%F8%BF%ACd%2Dday+142%2Ejpg"></a></td></tr>
+	</table>
+	<table class="img-txt">
+		<tr><td class="subject"><span class="chk"><input type="checkbox" name="SeqNo" value="2401"></span>&nbsp;<a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2401&PageNo=1">2010 정기공연 …</a><span class="cmt">[2]</span></td></tr>
+		<tr><td class="ab_name">
+<span onclick="ContextMenu.initMenu('xxxyel','박지수','rammy77','김보람','S',this);setHpAccessLog('HpLog_DropDown');" style="cursor:pointer;">김보람</span>
+		</td></tr>
+		<tr><td class="ab_date"><span class="date">2010-11-28</span> | <span class="hit">157</span></td></tr>
+	</table>
+			</td>
+			<td class="nb22"></td>
+			<td class="img">
+
+	<table class="img-box">
+		<tr><td><a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2400&PageNo=1"><img border="0" alt="2010 정기공연" src="http://album.freechal.com/ComService/Activity/Album/GetImage.asp?grpid=509950&objseq=1&file=th%5F2400%5FDSC%5F1183%2EJPG"></a></td></tr>
+	</table>
+	<table class="img-txt">
+		<tr><td class="subject"><span class="chk"><input type="checkbox" name="SeqNo" value="2400"></span>&nbsp;<a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2400&PageNo=1">2010 정기공연</a><span class="cmt">[8]</span></td></tr>
+		<tr><td class="ab_name">
+<span onclick="ContextMenu.initMenu('xxxyel','박지수','wcm8967','우찬미','S',this);setHpAccessLog('HpLog_DropDown');" style="cursor:pointer;">우찬미</span>
+		</td></tr>
+		<tr><td class="ab_date"><span class="date">2010-11-27</span> | <span class="hit">170</span></td></tr>
+	</table>
+			</td>
+			<td class="nb22"></td>
+			<td class="img">
+
+	<table class="img-box">
+		<tr><td><a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2399&PageNo=1"><img border="0" alt="2010 정기공연" src="http://album.freechal.com/ComService/Activity/Album/GetImage.asp?grpid=509950&objseq=1&file=th%5F2399%5FDSC%5F1181%2EJPG"></a></td></tr>
+	</table>
+	<table class="img-txt">
+		<tr><td class="subject"><span class="chk"><input type="checkbox" name="SeqNo" value="2399"></span>&nbsp;<a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2399&PageNo=1">2010 정기공연</a><span class="cmt">[1]</span></td></tr>
+		<tr><td class="ab_name">
+<span onclick="ContextMenu.initMenu('xxxyel','박지수','wcm8967','우찬미','S',this);setHpAccessLog('HpLog_DropDown');" style="cursor:pointer;">우찬미</span>
+		</td></tr>
+		<tr><td class="ab_date"><span class="date">2010-11-27</span> | <span class="hit">111</span></td></tr>
+	</table>
+			</td>
+			<td class="nb22"></td>
+			<td class="img">
+
+	<table class="img-box">
+		<tr><td><a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2398&PageNo=1"><img border="0" alt="2010 정기공연" src="http://album.freechal.com/ComService/Activity/Album/GetImage.asp?grpid=509950&objseq=1&file=th%5F2398%5FDSC%5F1151%2EJPG"></a></td></tr>
+	</table>
+	<table class="img-txt">
+		<tr><td class="subject"><span class="chk"><input type="checkbox" name="SeqNo" value="2398"></span>&nbsp;<a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2398&PageNo=1">2010 정기공연</a></td></tr>
+		<tr><td class="ab_name">
+<span onclick="ContextMenu.initMenu('xxxyel','박지수','wcm8967','우찬미','S',this);setHpAccessLog('HpLog_DropDown');" style="cursor:pointer;">우찬미</span>
+		</td></tr>
+		<tr><td class="ab_date"><span class="date">2010-11-27</span> | <span class="hit">94</span></td></tr>
+	</table>
+			</td>
+			<td class="nb22"></td>
+			<td class="img">
+
+	<table class="img-box">
+		<tr><td><a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2397&PageNo=1"><img border="0" alt="2010 정기공연" src="http://album.freechal.com/ComService/Activity/Album/GetImage.asp?grpid=509950&objseq=1&file=th%5F2397%5FDSC%5F1150%2EJPG"></a></td></tr>
+	</table>
+	<table class="img-txt">
+		<tr><td class="subject"><span class="chk"><input type="checkbox" name="SeqNo" value="2397"></span>&nbsp;<a href="CsPhotoView.asp?GrpId=509950&ObjSeq=1&SeqNo=2397&PageNo=1">2010 정기공연</a></td></tr>
+		<tr><td class="ab_name">
+<span onclick="ContextMenu.initMenu('xxxyel','박지수','wcm8967','우찬미','S',this);setHpAccessLog('HpLog_DropDown');" style="cursor:pointer;">우찬미</span>
+		</td></tr>
+		<tr><td class="ab_date"><span class="date">2010-11-27</span> | <span class="hit">71</span></td></tr>
+	</table>
+			</td>
+		</tr>
+
+</form>
+	</table>
+</div><!--/AlbumTdList-->
+<div id="List-btn">
+	<div id="ChkAll"><input type="Checkbox" name="checkAll" onclick="javascript:SelectArticleAll()"><span class="Chktxt">전체선택</span></div>
+	<div id="WriteBtn">
+		<div class="bt">
+		<a href="javascript:OpenSlideShow()"><img src="http://image.freechal.com/community/common/white/btn_sshow.gif"align="absmiddle" alt="슬라이드쇼"></a>			<a href="CsPhotoWriteForm.asp?GrpId=509950&ObjSeq=1"><img src="http://image.freechal.com/community/common/white/btn_write_photo.gif" alt="사진올리기" align="absmiddle"></a> 		</div>
+		<div class="bt">
+			<a href="javascript:DeleteArticle();"><img src="http://image.freechal.com/ComService/Activity/ComBtn/white/btn_del.gif" alt="삭제" align="absmiddle"></a>		</div>
+	</div>
+</div>
+<div id="Page">
+<span class="pgon">1</span>
+	I
+<a href="CsPhotoList.asp?GrpId=509950&ObjSeq=1&PageNo=2" class="pg">2</a>
+	I
+<a href="CsPhotoList.asp?GrpId=509950&ObjSeq=1&PageNo=3" class="pg">3</a>
+	I
+<a href="CsPhotoList.asp?GrpId=509950&ObjSeq=1&PageNo=4" class="pg">4</a>
+	I
+<a href="CsPhotoList.asp?GrpId=509950&ObjSeq=1&PageNo=5" class="pg">5</a>
+	I
+<a href="CsPhotoList.asp?GrpId=509950&ObjSeq=1&PageNo=6" class="pg">6</a>
+	I
+<a href="CsPhotoList.asp?GrpId=509950&ObjSeq=1&PageNo=7" class="pg">7</a>
+	I
+<a href="CsPhotoList.asp?GrpId=509950&ObjSeq=1&PageNo=8" class="pg">8</a>
+	I
+<a href="CsPhotoList.asp?GrpId=509950&ObjSeq=1&PageNo=9" class="pg">9</a>
+	I
+<a href="CsPhotoList.asp?GrpId=509950&ObjSeq=1&PageNo=10" class="pg">10</a>
+<a href="CsPhotoList.asp?GrpId=509950&ObjSeq=1&PageNo=2" class="pg"><img src="http://image.freechal.com/Comservice/Activity/ComBtn/white/pg_next.gif" align="absmiddle"></a>&nbsp;<a href="CsPhotoList.asp?GrpId=509950&ObjSeq=1&PageNo=11" class="pg"><img src="http://image.freechal.com/Comservice/Activity/ComBtn/white/pg_next02.gif" align="absmiddle"></a>
+</div>
+<!-- Paging End -->
+
+
+<script	language="javascript">
+var	objid = "cimg";
+function DisplaySearchDetail()
+{
+	if (srchform.exsch.checked)
+	{
+			document.all.SearchDetail.style.display = 'block';
+	}
+	else
+	{
+			document.all.SearchDetail.style.display = 'none';
+	}
+}
+
+function ChangeSearchDetail()
+{
+	if ( srchform.exsch.checked )
+	{
+		if (document.getElementById("range").selectedIndex == 3){
+			document.getElementById("userid").disabled = true;
+			document.getElementById("username").disabled = false;
+		}else if (document.getElementById("range").selectedIndex == 4) {
+			document.getElementById("username").disabled = true;
+			document.getElementById("userid").disabled = false;
+		}else{
+			document.getElementById("userid").disabled = false;
+			document.getElementById("username").disabled = false;
+		}
+	}
+}
+
+function NewSearch()
+{
+	var strCond;
+	var strDate;
+	var intYear;
+	var intMonth;
+	var intDay;
+	var i, imax;
+	var before180 = new Date("2012" + "/" + "8" + "/" + "5");
+	var from;
+
+	var sf =document.srchform;
+
+	strCond = "grpid=509950&objseq=1";
+	strCond = strCond + "&objid=GCOM13";
+
+	if (sf.elements["key"].value.length < 2) {
+		alert("검색어는 두 글자 이상이어야 합니다.");
+		return;
+	}
+
+	if(509950 == 0 ){
+	    strCond = strCond + "&Keyword=" + escape(sf.elements["key"].value);
+
+        if("1" == "139" || "1" == "133") {
+            document.location.href = "CsPhotoSrchList.asp?" + strCond;
+        }
+		else document.location.href = "CsBBSSrchList.asp?" + strCond;
+
+	}
+	else {
+        strCond = strCond + "&key=" + escape(sf.elements["key"].value);
+        strCond = strCond + "&type=cimg";
+        strCond = strCond + "&boardseq=1"
+        strCond = strCond + "&range=" + escape(sf.elements["range"].value);
+
+        if (document.all.SearchDetail.style.display == 'block')
+        {
+            strCond = strCond + "&userid=" + escape(sf.elements["userid"].value);
+            strCond = strCond + "&username=" + escape(sf.elements["username"].value);
+            strCond = strCond + "&fromseq=" + sf.elements["fromseq"].value;
+            strCond = strCond + "&toseq=" + sf.elements["toseq"].value;
+
+            for (i = 0; i < sf.elements["term"].length; i++) {
+                if (sf.elements["term"][i].checked == true) {
+                    strCond = strCond + "&term=" + sf.elements["term"][i].value;
+                }
+            }
+        }
+
+		document.location.href = "http://community.freechal.com/Comservice/Activity/Search/CsSearch.asp?" + strCond ;
+	}
+
+
+}
+
+function openSrch()
+{
+	var shwin;
+	var sf = document.srchform;
+	var i;
+	var width = 400 ;
+	var height = 270
+	if (document.srchform.term2.checked){
+		sf.key.disabled = true;
+		sf.userid.disabled = true;
+		sf.username.disabled = true;
+		sf.fromseq.disabled = true;
+		sf.toseq.disabled = true;
+		for(i=0; i<sf.range.length; i++){
+			sf.range[i].disabled = true;
+		}
+		for(i=0; i<sf.term.length; i++){
+			sf.term[i].disabled = true;
+		}
+		shwin = window.open('CsPhotoSrchForm.asp?GrpId=509950&ObjSeq=1', 'shbox', "left=" + ((window.screen.availWidth - 400) / 2) + ",top=" + ((window.screen.availHeight - 280) / 2) + ",width=400 ,height=280 ,directories=no,toolbar=no,status=no,resizable=no,scrollbars=no");
+	}else{
+		sf.key.disabled = false;
+		sf.userid.disabled = false;
+		sf.username.disabled = false;
+		sf.fromseq.disabled = false;
+		sf.toseq.disabled = false;
+		for(i=0; i<sf.range.length; i++){
+			sf.range[i].disabled = false;
+		}
+		for(i=0; i<sf.term.length; i++){
+			sf.term[i].disabled = false;
+		}
+	}
+}
+function SetFocus()
+{
+	 document.srchform.key.focus();
+}
+function showDate()
+{
+	 if (document.srchform.term[5].checked == true)
+	 {
+			document.all.ftDate.style.display = '';
+	 }
+	 else
+	 {
+			document.all.ftDate.style.display = 'none';
+	 }
+}
+
+function handleKeydown() {
+	if (event.keyCode == 13) {
+		NewSearch();
+	}
+	return false;
+}
+</script>
+<style>
+.ns
+{
+	color: #4D4D4D;
+}
+</style>
+
+	<form name="srchform" OnSubmit="NewSearch(this);return false" method="get">
+	
+		<div id="Search">
+
+			<select name="range" onchange="ChangeSearchDetail()">
+			<option value=sc >제목 + 본문
+<option value=s >제목
+<option value=c >본문
+<option value=i >작성자 ID
+<option value=u >작성자 이름
+
+			</select>
+			<input name="key" type="text" value="" class="search" onkeydown="javascript:handleKeydown();">
+			<a href="javascript:NewSearch(this);"><img src="http://image.freechal.com/community/Base/btn/btn_search.gif" alt="검색" align="absmiddle"></a>
+			<input type="checkbox" name="exsch" onclick="DisplaySearchDetail();" class="srch"> 상세검색
+		</div><!--/p>
+		<br-->
+		<p><div id="SearchDetail" style="display:none">
+			<ul>
+				<li>
+				검색범위설정 : 
+		
+				<span id="WriterID">작성자 ID :<input name="userid" type="text" value="" class="writer"></span>&nbsp;
+			
+				<span id="WriterName">
+				작성자 이름 :
+				<input name="username" type="text" value="" class="writer02">
+				</span>
+		
+				글번호 :
+				<input name="fromseq" type="text" value="" class="period">
+				<span class="bar">－</span>
+				<input name="toseq" type="text" value="" class="period">
+				</li>
+				<li>
+				검색기간설정 : 
+				<input type="radio" name="term" value="-1" checked>1년
+				<input type="radio" name="term" value="180" >6개월
+				<input type="radio" name="term" value="30">1개월
+				<input type="radio" name="term" value="7">1주일
+				<input type="radio" name="term" value="3">3일
+				<input type="radio" name="term" value="0">오늘
+			
+				<input type="checkbox" name="term2" value="-1" onClick="openSrch();">전체(일년이전 게시물 검색)
+			
+				</li>
+			</ul>
+			<div id="SearchBound"></div>
+			<div id="SearchPeriod"></div>
+		</div></p>
+	</form>
+
+
+<script>
+  function hidePumpTip()
+  {
+	document.cookie = "pumpTipShow=no;path=/";
+	document.location.href = document.location.href;
+  }
+</script>
+
+		
+<!-- 내용 끝-->
+		<!--------------------------------------------------------------->
+	</div><!--id="ContentsMain"-->
+</div><!--id="AC_wrap"-->
+<!-- 중앙 컨텐츠 영역 End -->
+<div id="AR_wrap">
+
+<!-- 메뉴 영역 Start -->
+<!--## Today 베스트 영상 Start ##-->
+
+<!-- 메뉴 영역 End -->
+<SCRIPT LANGUAGE="Javascript1.1" SRC="http://adv.freechal.com/RealMedia/ads/adstream_jx.ads/www.freechal.com/floating_ad/sub@Bottom"></script></div>
+</div>
+	    </div>
+	</div>
+	<!--## 중앙영역 End ##-->
+    <samp id="RD4"></samp><samp id="RD3"></samp><samp id="RD2"></samp><samp id="RD1"></samp>
+</div>
+<!--## 전체 박스 영역 End ##-->
+<!--## Footer Start ##-->
+<div id="Footer">
+<p id="copyright">Copyright &copy; 2000 ~ 2013 <b>FREECHAL</b> INC, All rights reserved.</p>
+</div>
+<!--## Footer End ##-->
+
+</body>
+</html>
