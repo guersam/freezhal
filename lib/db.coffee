@@ -1,8 +1,6 @@
 dbConfig = require '../database.json'
 config   = dbConfig[process.env.NODE_ENV || 'development']
 config.database = process.env.COMMUNITY if process.env.COMMUNITY
-if config.database == 'ed10th2'
-  config.database = 'ed10th'
 
 path    = require 'path'
 fs      = require 'fs'
