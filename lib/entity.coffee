@@ -259,8 +259,9 @@ class Article extends Entity
     @type = @data.type
     @isAnonymous = @type == 'ABBS'
     @data.id = utils.getDocIdFromUrl @url
-    if @type == 'PDS' && @data.id == '26968363'
-      @data.id = ''+ (parseInt(@data.id)-1)
+    # TODO assign one table to each board type instead of using this dirty hack
+    #if @type == 'PDS' && @data.id == 'something conflicted'
+    #  @data.id = ''+ (parseInt(@data.id)-1)
     delete @data.type
 
   parseUser: ($) =>
