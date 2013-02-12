@@ -26,4 +26,7 @@ Freechal (http://www.freechal.com/) club archiver
 ## 다 모르겠고 대신 해주세요
 
 xxxyel@gmail.com로 커뮤니티 주소와 접근 가능한 아이디, 패스워드를 알려주세요.  
-소정의 비용으로 직접 백업해 드립니다. (옵션 추가시 웹 브라우저로 열람 가능한 html 문서 제공)
+
+소정의 비용으로 직접 백업해 드립니다. (옵션 추가시 웹 브라우저로 열람 가능한 html 문서 제공)  
+
+[상세 정보](https://github.com/guersam/freezhal/blob/master/agency.md)
