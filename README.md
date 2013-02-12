@@ -23,6 +23,12 @@ Freechal (http://www.freechal.com/) club archiver
 6. run by `coffee crawler`
 
 
+## Known bugs
+
+- Article IDs may conflict in a large community
+  - *TODO* Assign a table to each board type instead of just one table for all articles
+
+
 ## 다 모르겠고 대신 해주세요
 
 xxxyel@gmail.com로 커뮤니티 주소와 접근 가능한 아이디, 패스워드를 알려주세요.  
