@@ -38,7 +38,7 @@ if cluster.isMaster
     env =
       id        : a.id
       pass      : a.pass
-      url       : "http://home.freechal.com/#{a.COMMUNITY}"
+      url       : "http://home.freechal.com/#{a.community}"
       COMMUNITY : a.community
     cluster.fork env
 
