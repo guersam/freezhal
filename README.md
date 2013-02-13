@@ -27,6 +27,7 @@ Freechal (http://www.freechal.com/) club archiver
 
 - Article IDs may conflict in a large community
   - *TODO* Assign a table to each board type instead of just one table for all articles
+- Irregular article date when title contains '<' or '>'
 
 
 ## 다 모르겠고 대신 해주세요
