@@ -8,6 +8,8 @@ Freechal (http://www.freechal.com/) club archiver
 
 * MySQL
 * Node.js (http://www.nodejs.org)
+* Python 2.7.1 or above
+* Need to be able to build libiconv
 * Tested on Ubuntu Linux - It may or may not work on Windows.
 
 
