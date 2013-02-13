@@ -7,8 +7,8 @@ Freechal (http://www.freechal.com/) club archiver
 ## Requirements
 
 * MySQL
-* Node.js (http://www.nodejs.org)
-* Python 2.7.1 or above
+* Node.js >= 0.8 (http://www.nodejs.org)
+* Python >= 2.7.1
 * Need to be able to build libiconv
 * Tested on Ubuntu Linux - It may or may not work on Windows.
 
