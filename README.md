@@ -1,4 +1,5 @@
 #### **_This project is no more maintained due to the termination of Frechal club service._**
+프리챌 클럽은 결국 멸망했습니다. 이 프로그램은 더이상 동작하지 않아요.
 
 
 
